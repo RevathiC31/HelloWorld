@@ -4,10 +4,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/hello-flask.git'
+                git branch: 'main', url: 'https://github.com/RevathiC31/HelloWorld.git'
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 script {
