@@ -1,8 +1,9 @@
-# This is a sample Python script.
-def print_hello(name):
-    print(f'Hello, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from flask import Flask
+app = Flask(__name__)
 
-if __name__ == '__main__':
-    print_hello('World')
+@app.route("/")
+def hello():
+    return "Hello, World from Flask!"
 
-
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
