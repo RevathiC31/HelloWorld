@@ -7,6 +7,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/RevathiC31/HelloWorld.git'
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 script {
@@ -20,10 +21,10 @@ pipeline {
 
         stage('Run Container Test') {
             steps {
-                sh 'docker run -d -p 5000:5000 --name test-flask revathic31/hello-flask:latest'
-                sh 'sleep 5'
-                sh 'curl http://localhost:5000'
-                sh 'docker rm -f test-flask'
+                bat 'docker run -d -p 5000:5000 --name test-flask revathic31/hello-flask:latest'
+                bat 'timeout /t 5'
+                bat 'powershell -Command "(Invoke-WebRequest http://localhost:5000).Content"'
+                bat 'docker rm -f test-flask'
             }
         }
     }
