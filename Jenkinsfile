@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/RevathiC31/HelloWorld.git'
+                checkout scm
             }
         }
 
